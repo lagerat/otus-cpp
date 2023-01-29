@@ -26,14 +26,14 @@ if (MSVC)
         /W4
     )
     target_compile_options(unitTests PRIVATE
-            /W4
+        /W4
     )
 else ()
     target_compile_options(helloworld_cli PRIVATE
         -Wall -Wextra -pedantic -Werror
     )
     target_compile_options(unitTests PRIVATE
-            -Wall -Wextra -pedantic -Werror
+        -Wall -Wextra -pedantic -Werror
     )
 endif()
 
