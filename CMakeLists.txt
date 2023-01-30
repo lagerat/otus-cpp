@@ -8,9 +8,9 @@ project(helloworld_cli VERSION ${PROJECT_VESRION})
 add_subdirectory(googletest EXCLUDE_FROM_ALL)
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
-add_executable(helloworld_cli main.cpp)
+add_executable(helloworld_cli main.cpp filters.cpp filters.h)
 
-add_executable(unitTests tests/tests.cpp)
+add_executable(unitTests tests/tests.cpp filters.cpp filters.h)
 
 set_target_properties(helloworld_cli PROPERTIES
     CXX_STANDARD 14
