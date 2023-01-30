@@ -4,14 +4,12 @@
 
 #include "filters.h"
 
-std::vector<std::string> split(const std::string &str, char d)
-{
+std::vector<std::string> split(const std::string &str, char d) {
     std::vector<std::string> r;
 
     std::string::size_type start = 0;
     std::string::size_type stop = str.find_first_of(d);
-    while(stop != std::string::npos)
-    {
+    while (stop != std::string::npos) {
         r.push_back(str.substr(start, stop - start));
 
         start = stop + 1;
@@ -24,24 +22,20 @@ std::vector<std::string> split(const std::string &str, char d)
 }
 
 
-int main()
-{
-    try
-    {
+int main() {
+    try {
         std::vector<std::vector<std::string> > ip_pool;
         std::istringstream input;
-        for(std::string line; std::getline(std::cin, line);)
-        {
+        for (std::string line; std::getline(std::cin, line);) {
             std::vector<std::string> v = split(line, '\t');
             ip_pool.push_back(split(v.at(0), '.'));
         }
-        std::sort(ip_pool.begin(), ip_pool.end(), [](const std::vector<std::string>&  a,
-                                                                    const  std::vector<std::string>  &b){
-            for (int i = 0; i < 4; ++i)
-            {
-                if (std::atoi(a[i].c_str()) < std::atoi(b[i].c_str())){
+        std::sort(ip_pool.begin(), ip_pool.end(), [](const std::vector<std::string> &a,
+                                                     const std::vector<std::string> &b) {
+            for (int i = 0; i < 4; ++i) {
+                if (std::atoi(a[i].c_str()) < std::atoi(b[i].c_str())) {
                     return false;
-                } else if(std::atoi(a[i].c_str()) > std::atoi(b[i].c_str())){
+                } else if (std::atoi(a[i].c_str()) > std::atoi(b[i].c_str())) {
                     return true;
                 }
             }
@@ -62,8 +56,7 @@ int main()
         printIPs(ip);
 
     }
-    catch(const std::exception &e)
-    {
+    catch (const std::exception &e) {
         std::cerr << e.what() << std::endl;
     }
 
