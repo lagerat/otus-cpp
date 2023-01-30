@@ -3,16 +3,16 @@ cmake_minimum_required(VERSION 3.10)
 set(PATCH_VERSION "1.0" CACHE INTERNAL "Patch version")
 set(PROJECT_VESRION 0.0.${PATCH_VERSION})
 
-project(helloworld_cli VERSION ${PROJECT_VESRION})
+project(ip_filter VERSION ${PROJECT_VESRION})
 
 add_subdirectory(googletest EXCLUDE_FROM_ALL)
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
-add_executable(helloworld_cli main.cpp filters.cpp filters.h)
+add_executable(ip_filter main.cpp filters.cpp filters.h)
 
 add_executable(unitTests tests/tests.cpp filters.cpp filters.h)
 
-set_target_properties(helloworld_cli PROPERTIES
+set_target_properties(ip_filter PROPERTIES
     CXX_STANDARD 14
     CXX_STANDARD_REQUIRED ON
 )
@@ -22,14 +22,14 @@ target_link_libraries(unitTests
 )
 
 if (MSVC)
-    target_compile_options(helloworld_cli PRIVATE
+    target_compile_options(ip_filter PRIVATE
         /W4
     )
     target_compile_options(unitTests PRIVATE
         /W4
     )
 else ()
-    target_compile_options(helloworld_cli PRIVATE
+    target_compile_options(ip_filter PRIVATE
         -Wall -Wextra -pedantic -Werror
     )
     target_compile_options(unitTests PRIVATE
@@ -39,7 +39,7 @@ endif()
 
 
 
-install(TARGETS helloworld_cli RUNTIME DESTINATION bin)
+install(TARGETS ip_filter RUNTIME DESTINATION bin)
 
 set(CPACK_GENERATOR DEB)
 
