@@ -1,4 +1,3 @@
-#include <cassert>
 #include <cstdlib>
 #include <iostream>
 #include <string>
@@ -6,12 +5,6 @@
 #include <sstream>
 #include <algorithm>
 
-// ("",  '.') -> [""]
-// ("11", '.') -> ["11"]
-// ("..", '.') -> ["", "", ""]
-// ("11.", '.') -> ["11", ""]
-// (".11", '.') -> ["", "11"]
-// ("11.22", '.') -> ["11", "22"]
 std::vector<std::string> split(const std::string &str, char d)
 {
     std::vector<std::string> r;
@@ -31,6 +24,57 @@ std::vector<std::string> split(const std::string &str, char d)
     return r;
 }
 
+void printIPs(const std::vector<std::vector<std::string>> &ip_pool){
+    for(auto ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip)
+    {
+        for(auto ip_part = ip->cbegin(); ip_part != ip->cend(); ++ip_part)
+        {
+            if (ip_part != ip->cbegin())
+            {
+                std::cout << ".";
+
+            }
+            std::cout << *ip_part;
+        }
+        std::cout << std::endl;
+    }
+}
+
+
+std::vector<std::vector<std::string>> filter(const std::vector<std::vector<std::string>> &ip_pool,
+                                             int firstBlock, int secondBlock = -1){
+    std::vector<std::vector<std::string>> result;
+    for(auto ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip)
+    {
+        auto elem = *ip;
+        if (secondBlock == -1){
+            if ( elem[0] != std::to_string(firstBlock)){
+                continue;
+            }
+        } else if (elem[0] != std::to_string(firstBlock) || elem[1] != std::to_string(secondBlock)){
+            continue;
+        }
+        result.push_back(*ip);
+    }
+    return result;
+}
+
+std::vector<std::vector<std::string>> filter_any(const std::vector<std::vector<std::string>> &ip_pool,
+                                             int block){
+    std::vector<std::vector<std::string>> result;
+    for(auto ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip)
+    {
+        auto elem = *ip;
+        auto number = std::to_string(block);
+        if(elem[0] != number && elem[1] != number && elem[2] != number && elem[3] != number)
+        {
+            continue;
+        }
+        result.push_back(*ip);
+    }
+    return result;
+}
+
 int main()
 {
     try
@@ -42,7 +86,8 @@ int main()
             std::vector<std::string> v = split(line, '\t');
             ip_pool.push_back(split(v.at(0), '.'));
         }
-        std::sort(ip_pool.begin(), ip_pool.end(), [](const std::vector<std::string>&  a,const  std::vector<std::string>  &b){
+        std::sort(ip_pool.begin(), ip_pool.end(), [](const std::vector<std::string>&  a,
+                                                                    const  std::vector<std::string>  &b){
             for (int i = 0; i < 4; ++i)
             {
                 if (std::atoi(a[i].c_str()) < std::atoi(b[i].c_str())){
@@ -53,135 +98,20 @@ int main()
             }
             return false;
         });
-        // TODO reverse lexicographically sort
 
-        for(auto ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip)
-        {
-            for(auto ip_part = ip->cbegin(); ip_part != ip->cend(); ++ip_part)
-            {
-                if (ip_part != ip->cbegin())
-                {
-                    std::cout << ".";
+        printIPs(ip_pool);
 
-                }
-                std::cout << *ip_part;
-            }
-            std::cout << std::endl;
-        }
+        auto ip = filter(ip_pool, 1);
+        printIPs(ip);
 
-        // 222.173.235.246
-        // 222.130.177.64
-        // 222.82.198.61
-        // ...
-        // 1.70.44.170
-        // 1.29.168.152
-        // 1.1.234.8
-        for(auto ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip)
-        {
-            auto elem = *ip;
-            if(elem[0] != "1")
-            {
-                continue;
-            }
-            for(auto ip_part = ip->cbegin(); ip_part != ip->cend(); ++ip_part)
-            {
-                if (ip_part != ip->cbegin())
-                {
-                    std::cout << ".";
 
-                }
-                std::cout << *ip_part;
-            }
-            std::cout << std::endl;
-        }
-        // TODO filter by first byte and output
-        // ip = filter(1)
+        ip = filter(ip_pool, 46, 70);
+        printIPs(ip);
 
-        // 1.231.69.33
-        // 1.87.203.225
-        // 1.70.44.170
-        // 1.29.168.152
-        // 1.1.234.8
-        for(auto ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip)
-        {
-            auto elem = *ip;
-            if(elem[0] != "46" || elem[1] != "70")
-            {
-                continue;
-            }
-            for(auto ip_part = ip->cbegin(); ip_part != ip->cend(); ++ip_part)
-            {
-                if (ip_part != ip->cbegin())
-                {
-                    std::cout << ".";
 
-                }
-                std::cout << *ip_part;
-            }
-            std::cout << std::endl;
-        }
-        // TODO filter by first and second bytes and output
-        // ip = filter(46, 70)
+        ip = filter_any(ip_pool, 46);
+        printIPs(ip);
 
-        // 46.70.225.39
-        // 46.70.147.26
-        // 46.70.113.73
-        // 46.70.29.76
-        for(auto ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip)
-        {
-            auto elem = *ip;
-            if(elem[0] != "46" && elem[1] != "46" && elem[2] != "46" && elem[3] != "46")
-            {
-                continue;
-            }
-            for(auto ip_part = ip->cbegin(); ip_part != ip->cend(); ++ip_part)
-            {
-                if (ip_part != ip->cbegin())
-                {
-                    std::cout << ".";
-
-                }
-                std::cout << *ip_part;
-            }
-            std::cout << std::endl;
-        }
-        // TODO filter by any byte and output
-        // ip = filter_any(46)
-
-        // 186.204.34.46
-        // 186.46.222.194
-        // 185.46.87.231
-        // 185.46.86.132
-        // 185.46.86.131
-        // 185.46.86.131
-        // 185.46.86.22
-        // 185.46.85.204
-        // 185.46.85.78
-        // 68.46.218.208
-        // 46.251.197.23
-        // 46.223.254.56
-        // 46.223.254.56
-        // 46.182.19.219
-        // 46.161.63.66
-        // 46.161.61.51
-        // 46.161.60.92
-        // 46.161.60.35
-        // 46.161.58.202
-        // 46.161.56.241
-        // 46.161.56.203
-        // 46.161.56.174
-        // 46.161.56.106
-        // 46.161.56.106
-        // 46.101.163.119
-        // 46.101.127.145
-        // 46.70.225.39
-        // 46.70.147.26
-        // 46.70.113.73
-        // 46.70.29.76
-        // 46.55.46.98
-        // 46.49.43.85
-        // 39.46.86.85
-        // 5.189.203.46
     }
     catch(const std::exception &e)
     {
