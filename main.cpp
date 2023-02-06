@@ -24,18 +24,30 @@ std::vector<std::string> split(const std::string &str, char d) {
 
 int main() {
     try {
-        std::vector<std::vector<std::string> > ip_pool;
-        std::istringstream input;
+        std::vector<std::array<uint8_t, 4>> ip_pool;
         for (std::string line; std::getline(std::cin, line);) {
             std::vector<std::string> v = split(line, '\t');
-            ip_pool.push_back(split(v.at(0), '.'));
+            auto ip = split(v.at(0), '.');
+            if (ip.size() < 4) {
+                std::cerr << line << "Is wrong data, fix this record";
+                continue;
+            }
+            std::vector<uint8_t> correctNumbers;
+            for(int i = 0; i < 4; ++i){
+                try {
+                    correctNumbers.push_back(std::stoi(ip[i]));
+                } catch (std::invalid_argument &err) {
+                    std::cerr << line << "Is wrong data, fix this record";
+                    break;
+                }
+            }
+            ip_pool.push_back({correctNumbers[0],correctNumbers[1],correctNumbers[2],correctNumbers[3]});
         }
-        std::sort(ip_pool.begin(), ip_pool.end(), [](const std::vector<std::string> &a,
-                                                     const std::vector<std::string> &b) {
+        std::sort(ip_pool.begin(), ip_pool.end(), [](const auto &a, const auto &b) {
             for (int i = 0; i < 4; ++i) {
-                if (std::atoi(a[i].c_str()) < std::atoi(b[i].c_str())) {
+                if (a[i] < b[i]) {
                     return false;
-                } else if (std::atoi(a[i].c_str()) > std::atoi(b[i].c_str())) {
+                } else if (a[i] > b[i]) {
                     return true;
                 }
             }
@@ -44,17 +56,13 @@ int main() {
 
         printIPs(ip_pool);
 
-        auto ip = filter(ip_pool, 1);
-        printIPs(ip);
+        filter(ip_pool, 1);
 
 
-        ip = filter(ip_pool, 46, 70);
-        printIPs(ip);
+        filter(ip_pool, 46, 70);
 
 
-        ip = filter_any(ip_pool, 46);
-        printIPs(ip);
-
+        filter_any(ip_pool, 46);
     }
     catch (const std::exception &e) {
         std::cerr << e.what() << std::endl;

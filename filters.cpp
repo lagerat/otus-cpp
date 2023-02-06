@@ -1,46 +1,40 @@
 #include "filters.h"
 
-void printIPs(const std::vector<std::vector<std::string>> &ip_pool) {
-    for (auto ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip) {
-        for (auto ip_part = ip->cbegin(); ip_part != ip->cend(); ++ip_part) {
-            if (ip_part != ip->cbegin()) {
+void printIPs(std::vector<std::array<uint8_t, 4>> &ip_pool) {
+    for (auto ip : ip_pool) {
+        for (size_t i = 0; i < ip.size(); i++) {
+            std::cout << static_cast<int>(ip[i]);
+            if(i != 3){
                 std::cout << ".";
-
             }
-            std::cout << *ip_part;
         }
         std::cout << std::endl;
     }
 }
 
 
-std::vector<std::vector<std::string>> filter(const std::vector<std::vector<std::string>> &ip_pool,
-                                             int firstBlock, int secondBlock) {
-    std::vector<std::vector<std::string>> result;
-    for (auto ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip) {
-        auto elem = *ip;
+void filter(const std::vector<std::array<uint8_t, 4>> &ip_pool, int firstBlock, int secondBlock) {
+    for (auto &ip : ip_pool) {
+        auto elem = ip;
         if (secondBlock == -1) {
-            if (elem[0] != std::to_string(firstBlock)) {
+            if (elem[0] != firstBlock) {
                 continue;
             }
-        } else if (elem[0] != std::to_string(firstBlock) || elem[1] != std::to_string(secondBlock)) {
+        } else if (elem[0] != firstBlock || elem[1] != secondBlock) {
             continue;
         }
-        result.push_back(*ip);
+        std::cout << (int)ip[0] << '.' << (int)ip[1] << '.' << (int)ip[2] << '.' << (int)ip[3] << "\n";
     }
-    return result;
 }
 
-std::vector<std::vector<std::string>> filter_any(const std::vector<std::vector<std::string>> &ip_pool,
+void filter_any(const std::vector<std::array<uint8_t, 4>> &ip_pool,
                                                  int block) {
     std::vector<std::vector<std::string>> result;
-    for (auto ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip) {
-        auto elem = *ip;
-        auto number = std::to_string(block);
-        if (elem[0] != number && elem[1] != number && elem[2] != number && elem[3] != number) {
+    for (auto &ip : ip_pool) {
+        auto elem = ip;
+        if (elem[0] != block && elem[1] != block && elem[2] != block && elem[3] != block) {
             continue;
         }
-        result.push_back(*ip);
+        std::cout << (int)ip[0] << '.' << (int)ip[1] << '.' << (int)ip[2] << '.' << (int)ip[3] << "\n";
     }
-    return result;
 }
