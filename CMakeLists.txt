@@ -8,12 +8,12 @@ project(helloworld_cli VERSION ${PROJECT_VESRION})
 add_subdirectory(googletest EXCLUDE_FROM_ALL)
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
-add_executable(helloworld_cli main.cpp)
+add_executable(helloworld_cli main.cpp  limited_allocator.h)
 
-add_executable(unitTests tests/tests.cpp)
+add_executable(unitTests tests/tests.cpp  limited_allocator.h)
 
 set_target_properties(helloworld_cli PROPERTIES
-    CXX_STANDARD 14
+    CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
 )
 target_link_libraries(unitTests
