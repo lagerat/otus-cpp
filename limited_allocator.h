@@ -8,6 +8,10 @@ template<typename T>
 struct limited_allocator{
     using value_type = T;
 
+    struct rebind {
+        using other = limited_allocator<T>;
+    };
+
     limited_allocator(){
         dedicatedMem = std::malloc(10 * sizeof(T));
         if (!dedicatedMem){
