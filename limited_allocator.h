@@ -63,9 +63,17 @@ struct limited_allocator {
         p->~U();
     }
 
-private:
+    using propagate_on_container_copy_assignment = std::true_type;
+    using propagate_on_container_move_assignment = std::true_type;
+    using propagate_on_container_swap = std::true_type;
+
     bool usedMem[10]{};
     void *dedicatedMem = nullptr;
 };
+
+template <class T, class U>
+constexpr bool operator== (const limited_allocator<T> &a1, const limited_allocator<U> &a2) noexcept {
+    return a1.memoryVector == a2.memoryVector;
+}
 
 #endif //HELLOWORLD_CLI_LIMITED_ALLOCATOR_H

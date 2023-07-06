@@ -90,10 +90,18 @@ struct allocator {
         p->~U();
     }
 
-private:
+    using propagate_on_container_copy_assignment = std::true_type;
+    using propagate_on_container_move_assignment = std::true_type;
+    using propagate_on_container_swap = std::true_type;
+
     std::vector<void *> memoryVector;
     bool *usedMem = nullptr;
     int allocatedMemoryCount = 0;
 };
+
+template <class T, class U>
+constexpr bool operator== (const allocator<T> &a1, const allocator<U> &a2) noexcept {
+    return a1.memoryVector == a2.memoryVector;
+}
 
 #endif //HELLOWORLD_CLI_ALLOCATOR_H
