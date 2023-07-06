@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
 
-TEST(test_version, test_valid_version) {
+TEST(test_suite_example, test_name) {
     EXPECT_TRUE(true);
 }
