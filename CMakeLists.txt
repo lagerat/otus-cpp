@@ -8,12 +8,12 @@ project(sfinae_ip VERSION ${PROJECT_VESRION})
 add_subdirectory(googletest EXCLUDE_FROM_ALL)
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
-add_executable(sfinae_ip main.cpp)
+add_executable(sfinae_ip main.cpp additional_func.h ip_print.h)
 
-add_executable(unitTests tests/tests.cpp)
+add_executable(unitTests tests/tests.cpp additional_func.h ip_print.h)
 
 set_target_properties(sfinae_ip PROPERTIES
-    CXX_STANDARD 14
+    CXX_STANDARD 20
     CXX_STANDARD_REQUIRED ON
 )
 target_link_libraries(unitTests
