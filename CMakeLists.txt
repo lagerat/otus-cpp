@@ -3,16 +3,16 @@ cmake_minimum_required(VERSION 3.10)
 set(PATCH_VERSION "1.0" CACHE INTERNAL "Patch version")
 set(PROJECT_VESRION 0.0.${PATCH_VERSION})
 
-project(project_name VERSION ${PROJECT_VESRION})
+project(GraphicsEditor VERSION ${PROJECT_VESRION})
 
 add_subdirectory(googletest EXCLUDE_FROM_ALL)
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
-add_executable(project_name main.cpp)
+add_executable(GraphicsEditor main.cpp src/Models/Document.cpp src/Models/Document.h src/Models/GraphicPrimitive.cpp src/Models/GraphicPrimitive.h src/Models/Line.cpp src/Models/Line.h src/Models/Rectangle.cpp src/Models/Rectangle.h src/Controllers/DocumentController.cpp src/Controllers/DocumentController.h src/Controllers/PrimitiveController.cpp src/Controllers/PrimitiveController.h src/Views/DocumentView.cpp src/Views/DocumentView.h src/math/MathHelper.h)
 
 add_executable(unitTests tests/tests.cpp)
 
-set_target_properties(project_name PROPERTIES
+set_target_properties(GraphicsEditor PROPERTIES
     CXX_STANDARD 14
     CXX_STANDARD_REQUIRED ON
 )
@@ -22,24 +22,24 @@ target_link_libraries(unitTests
 )
 
 if (MSVC)
-    target_compile_options(project_name PRIVATE
+    target_compile_options(GraphicsEditor PRIVATE
         /W4
     )
     target_compile_options(unitTests PRIVATE
         /W4
     )
 else ()
-    target_compile_options(project_name PRIVATE
-        -Wall -Wextra -pedantic -Werror
+    target_compile_options(GraphicsEditor PRIVATE
+        -Wall -Wextra -pedantic -Werror -Wno-error=unused-parameter
     )
     target_compile_options(unitTests PRIVATE
-        -Wall -Wextra -pedantic -Werror
+        -Wall -Wextra -pedantic -Werror -Wno-error=unused-parameter
     )
 endif()
 
 
 
-install(TARGETS project_name RUNTIME DESTINATION bin)
+install(TARGETS GraphicsEditor RUNTIME DESTINATION bin)
 
 set(CPACK_GENERATOR DEB)
 
