@@ -3,6 +3,9 @@
 
 #include "GraphicPrimitive.h"
 
+/**
+* @brief Line
+*/
 class Line : public GraphicPrimitive{
 public:
     Line() = default;

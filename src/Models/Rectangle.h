@@ -3,6 +3,9 @@
 
 #include "GraphicPrimitive.h"
 
+/**
+* @brief Rectangle
+*/
 class Rectangle : public GraphicPrimitive{
 public:
     Rectangle() = default;

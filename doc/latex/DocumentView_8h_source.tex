@@ -1,0 +1,48 @@
+\doxysection{Document\+View.\+h}
+\hypertarget{DocumentView_8h_source}{}\label{DocumentView_8h_source}\index{src/Views/DocumentView.h@{src/Views/DocumentView.h}}
+\mbox{\hyperlink{DocumentView_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ GRAPHICSEDITOR\_DOCUMENTVIEW\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ GRAPHICSEDITOR\_DOCUMENTVIEW\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Document_8h}{../Models/Document.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Line_8h}{../Models/Line.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Rectangle_8h}{../Models/Rectangle.h}}"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{DocumentController_8h}{../Controllers/DocumentController.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{PrimitiveController_8h}{../Controllers/PrimitiveController.h}}"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classDocumentView}{DocumentView}}\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{classDocumentView_a65003d2f0c810dfde4afeaac35c1b227}{DocumentView}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{classDocumentView_addefb0c331ece39379b720a2c2c78c11}{\string~DocumentView}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDocumentView_a0778d4553cb484b4187a67b6e446e8f7}{Render}}();}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDocumentView_a7ebe17200e26ccacd52d825a909f7477}{UpdateUI}}();}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDocumentView_a77e4693084bce5bad240d1b5b8e3d2cc}{HandleEvents}}();}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classDocumentView_a516a0a35998348e94336d2029eff4ab0}{IsOpen}}();}
+\DoxyCodeLine{00025\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ renderLine(\textcolor{keyword}{const}\ \mbox{\hyperlink{classLine}{Line}}\&);}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ renderRectangle(\textcolor{keyword}{const}\ \mbox{\hyperlink{classRectangle}{Rectangle}}\&);}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ renderDocument(std::unique\_ptr<Document>\ document);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ exportDocument(\textcolor{keyword}{const}\ std::string\&\ filename);}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ importDocument(\textcolor{keyword}{const}\ std::string\&\ filename);}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ createDocument();}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ addPrimitive(std::unique\_ptr<GraphicPrimitive>);}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ deletePrimitive(std::unique\_ptr<GraphicPrimitive>);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ createLine();}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ createRectangle();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{classDocumentController}{DocumentController}}\ \ \ \ \ \ m\_documentController;}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{classPrimitiveController}{PrimitiveController}}\ \ \ \ \ m\_primitiveController;}
+\DoxyCodeLine{00042\ \};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//GRAPHICSEDITOR\_DOCUMENTVIEW\_H}}
+
+\end{DoxyCode}

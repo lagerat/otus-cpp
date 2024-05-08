@@ -3,6 +3,10 @@
 
 #include "../Models/Document.h"
 
+/**
+* @brief A controller for documents
+*/
+
 class DocumentController {
 public:
     DocumentController() = default;

@@ -9,6 +9,9 @@
 #include "../Controllers/DocumentController.h"
 #include "../Controllers/PrimitiveController.h"
 
+/**
+* @brief Document view, provides userIO, and provides application control
+*/
 class DocumentView {
 public:
     DocumentView() = default;

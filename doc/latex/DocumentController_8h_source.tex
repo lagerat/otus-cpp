@@ -1,0 +1,32 @@
+\doxysection{Document\+Controller.\+h}
+\hypertarget{DocumentController_8h_source}{}\label{DocumentController_8h_source}\index{src/Controllers/DocumentController.h@{src/Controllers/DocumentController.h}}
+\mbox{\hyperlink{DocumentController_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ GRAPHICSEDITOR\_DOCUMENTCONTROLLER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ GRAPHICSEDITOR\_DOCUMENTCONTROLLER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Document_8h}{../Models/Document.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classDocumentController}{DocumentController}}\ \{}
+\DoxyCodeLine{00011\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{classDocumentController_a01a2385736effd3602b303652001efaa}{DocumentController}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{classDocumentController_a42f43a48147aa772e3168e5c01666153}{\string~DocumentController}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDocumentController_a2b499ee046bb4eb4e41d5fadb9fab142}{CreateNewDocument}}();}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDocumentController_ab672c4d4df9ff6855d97e65f3210e85b}{ImportDocument}}(\textcolor{keyword}{const}\ std::string\&\ filename);}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDocumentController_af395867cf72416657652ce4711a76a5d}{ExportDocument}}(\textcolor{keyword}{const}\ std::string\&\ filename);}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ std::unique\_ptr<Document>\ \mbox{\hyperlink{classDocumentController_ab6d06fa8fd38809b3c13c44dd70ebbb8}{GetCurrentDocument}}();}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDocumentController_a4a4accca954483770c32ed44fc83df56}{Undo}}();}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDocumentController_a8a3a8ca675b0b2f99e531adf19eaf7c5}{Redo}}();}
+\DoxyCodeLine{00023\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ std::unique\_ptr<Document>\ m\_currentDocument;}
+\DoxyCodeLine{00026\ \ \ \ \ std::vector<std::unique\_ptr<Document>>\ m\_documents;}
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//GRAPHICSEDITOR\_DOCUMENTCONTROLLER\_H}}
+
+\end{DoxyCode}

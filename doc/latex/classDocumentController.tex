@@ -1,0 +1,93 @@
+\doxysection{Document\+Controller Class Reference}
+\hypertarget{classDocumentController}{}\label{classDocumentController}\index{DocumentController@{DocumentController}}
+
+
+A controller for documents.  
+
+
+
+
+{\ttfamily \#include $<$Document\+Controller.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDocumentController_a01a2385736effd3602b303652001efaa}{Document\+Controller}} ()=default
+\item 
+\mbox{\hyperlink{classDocumentController_a42f43a48147aa772e3168e5c01666153}{\texorpdfstring{$\sim$}{\string~}\+Document\+Controller}} ()=default
+\item 
+void \mbox{\hyperlink{classDocumentController_a2b499ee046bb4eb4e41d5fadb9fab142}{Create\+New\+Document}} ()
+\item 
+void \mbox{\hyperlink{classDocumentController_ab672c4d4df9ff6855d97e65f3210e85b}{Import\+Document}} (const std\+::string \&filename)
+\item 
+void \mbox{\hyperlink{classDocumentController_af395867cf72416657652ce4711a76a5d}{Export\+Document}} (const std\+::string \&filename)
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classDocument}{Document}} $>$ \mbox{\hyperlink{classDocumentController_ab6d06fa8fd38809b3c13c44dd70ebbb8}{Get\+Current\+Document}} ()
+\item 
+void \mbox{\hyperlink{classDocumentController_a4a4accca954483770c32ed44fc83df56}{Undo}} ()
+\item 
+void \mbox{\hyperlink{classDocumentController_a8a3a8ca675b0b2f99e531adf19eaf7c5}{Redo}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A controller for documents. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classDocumentController_a01a2385736effd3602b303652001efaa}\label{classDocumentController_a01a2385736effd3602b303652001efaa} 
+\index{DocumentController@{DocumentController}!DocumentController@{DocumentController}}
+\index{DocumentController@{DocumentController}!DocumentController@{DocumentController}}
+\doxysubsubsection{\texorpdfstring{DocumentController()}{DocumentController()}}
+{\footnotesize\ttfamily Document\+Controller\+::\+Document\+Controller (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\Hypertarget{classDocumentController_a42f43a48147aa772e3168e5c01666153}\label{classDocumentController_a42f43a48147aa772e3168e5c01666153} 
+\index{DocumentController@{DocumentController}!````~DocumentController@{\texorpdfstring{$\sim$}{\string~}DocumentController}}
+\index{````~DocumentController@{\texorpdfstring{$\sim$}{\string~}DocumentController}!DocumentController@{DocumentController}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}DocumentController()}{\string~DocumentController()}}
+{\footnotesize\ttfamily Document\+Controller\+::\texorpdfstring{$\sim$}{\string~}\+Document\+Controller (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classDocumentController_a2b499ee046bb4eb4e41d5fadb9fab142}\label{classDocumentController_a2b499ee046bb4eb4e41d5fadb9fab142} 
+\index{DocumentController@{DocumentController}!CreateNewDocument@{CreateNewDocument}}
+\index{CreateNewDocument@{CreateNewDocument}!DocumentController@{DocumentController}}
+\doxysubsubsection{\texorpdfstring{CreateNewDocument()}{CreateNewDocument()}}
+{\footnotesize\ttfamily void Document\+Controller\+::\+Create\+New\+Document (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classDocumentController_af395867cf72416657652ce4711a76a5d}\label{classDocumentController_af395867cf72416657652ce4711a76a5d} 
+\index{DocumentController@{DocumentController}!ExportDocument@{ExportDocument}}
+\index{ExportDocument@{ExportDocument}!DocumentController@{DocumentController}}
+\doxysubsubsection{\texorpdfstring{ExportDocument()}{ExportDocument()}}
+{\footnotesize\ttfamily void Document\+Controller\+::\+Export\+Document (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+\Hypertarget{classDocumentController_ab6d06fa8fd38809b3c13c44dd70ebbb8}\label{classDocumentController_ab6d06fa8fd38809b3c13c44dd70ebbb8} 
+\index{DocumentController@{DocumentController}!GetCurrentDocument@{GetCurrentDocument}}
+\index{GetCurrentDocument@{GetCurrentDocument}!DocumentController@{DocumentController}}
+\doxysubsubsection{\texorpdfstring{GetCurrentDocument()}{GetCurrentDocument()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classDocument}{Document}} $>$ Document\+Controller\+::\+Get\+Current\+Document (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classDocumentController_ab672c4d4df9ff6855d97e65f3210e85b}\label{classDocumentController_ab672c4d4df9ff6855d97e65f3210e85b} 
+\index{DocumentController@{DocumentController}!ImportDocument@{ImportDocument}}
+\index{ImportDocument@{ImportDocument}!DocumentController@{DocumentController}}
+\doxysubsubsection{\texorpdfstring{ImportDocument()}{ImportDocument()}}
+{\footnotesize\ttfamily void Document\+Controller\+::\+Import\+Document (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+\Hypertarget{classDocumentController_a8a3a8ca675b0b2f99e531adf19eaf7c5}\label{classDocumentController_a8a3a8ca675b0b2f99e531adf19eaf7c5} 
+\index{DocumentController@{DocumentController}!Redo@{Redo}}
+\index{Redo@{Redo}!DocumentController@{DocumentController}}
+\doxysubsubsection{\texorpdfstring{Redo()}{Redo()}}
+{\footnotesize\ttfamily void Document\+Controller\+::\+Redo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classDocumentController_a4a4accca954483770c32ed44fc83df56}\label{classDocumentController_a4a4accca954483770c32ed44fc83df56} 
+\index{DocumentController@{DocumentController}!Undo@{Undo}}
+\index{Undo@{Undo}!DocumentController@{DocumentController}}
+\doxysubsubsection{\texorpdfstring{Undo()}{Undo()}}
+{\footnotesize\ttfamily void Document\+Controller\+::\+Undo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Controllers/\mbox{\hyperlink{DocumentController_8h}{Document\+Controller.\+h}}\item 
+src/\+Controllers/\mbox{\hyperlink{DocumentController_8cpp}{Document\+Controller.\+cpp}}\end{DoxyCompactItemize}

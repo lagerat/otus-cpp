@@ -1,5 +1,9 @@
 #ifndef GRAPHICSEDITOR_MATHHELPER_H
 #define GRAPHICSEDITOR_MATHHELPER_H
+/**
+ * @file MathHelper.h
+ * @brief All math entities
+ */
 namespace myMath
 {
 

@@ -1,0 +1,33 @@
+\doxysection{Rectangle.\+h}
+\hypertarget{Rectangle_8h_source}{}\label{Rectangle_8h_source}\index{src/Models/Rectangle.h@{src/Models/Rectangle.h}}
+\mbox{\hyperlink{Rectangle_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ GRAPHICSEDITOR\_RECTANGLE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ GRAPHICSEDITOR\_RECTANGLE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{GraphicPrimitive_8h}{GraphicPrimitive.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRectangle}{Rectangle}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classGraphicPrimitive}{GraphicPrimitive}}\{}
+\DoxyCodeLine{00010\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{classRectangle_ab74337363dcb42ccb4b030b0970085f8}{Rectangle}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{classRectangle_ab9f43716b07131b960f922e118b43f5c}{\string~Rectangle}}()\ \textcolor{keyword}{override}\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRectangle_aba9604ae3c6f2083eb864ffe6c17e8b3}{Draw}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRectangle_a38417acba7e54c04941cbd505b3e9ea5}{Translate}}(\textcolor{keywordtype}{double}\ dx,\ \textcolor{keywordtype}{double}\ dy)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRectangle_aa84c90e121c0ec808987353a1bb70011}{Rotate}}(\textcolor{keywordtype}{double}\ angle)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRectangle_aabe9e284257fa7c11d611fb7b6b371e5}{Scale}}(\textcolor{keywordtype}{double}\ sx,\ \textcolor{keywordtype}{double}\ sy)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRectangle_a0b4ba408c8c6e264edfb991a12d8f297}{SetHeight}}(\textcolor{keywordtype}{double}\ height);}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRectangle_a4582bf86b9498dd14fff535a286222bc}{SetWidth}}(\textcolor{keywordtype}{double}\ width);}
+\DoxyCodeLine{00022\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{double}\ m\_width;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{double}\ m\_height;}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{classmyMath_1_1Position}{myMath::Position}}\ m\_topLeftCorner;}
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//GRAPHICSEDITOR\_RECTANGLE\_H}}
+
+\end{DoxyCode}

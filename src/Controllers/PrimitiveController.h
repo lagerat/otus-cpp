@@ -8,6 +8,9 @@
 #include <vector>
 #include <memory>
 
+/**
+* @brief A controller for graphics objects
+*/
 class PrimitiveController {
 public:
     PrimitiveController() = default;

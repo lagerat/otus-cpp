@@ -7,6 +7,9 @@
 
 #include "GraphicPrimitive.h"
 
+/**
+* @brief Document model
+*/
 class Document {
 public:
     Document() = default;

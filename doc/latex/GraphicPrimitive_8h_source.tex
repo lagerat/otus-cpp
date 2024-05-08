@@ -1,0 +1,32 @@
+\doxysection{Graphic\+Primitive.\+h}
+\hypertarget{GraphicPrimitive_8h_source}{}\label{GraphicPrimitive_8h_source}\index{src/Models/GraphicPrimitive.h@{src/Models/GraphicPrimitive.h}}
+\mbox{\hyperlink{GraphicPrimitive_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ GRAPHICSEDITOR\_GRAPHICPRIMITIVE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ GRAPHICSEDITOR\_GRAPHICPRIMITIVE\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{MathHelper_8h}{../math/MathHelper.h}}"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGraphicPrimitive}{GraphicPrimitive}}\ \{}
+\DoxyCodeLine{00009\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{classGraphicPrimitive_a03170ec7fcc722ee803ccc099810d343}{GraphicPrimitive}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classGraphicPrimitive_abe4a5948c0e63a4de97e41a2bb9b0bd0}{\string~GraphicPrimitive}}()\ \{\};}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraphicPrimitive_ab8da532dc6bd6126e941e46a3990e8a3}{Draw}}()\ =\ 0;}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraphicPrimitive_a2de047f5f7481b77f03626a78160e8f7}{Translate}}(\textcolor{keywordtype}{double}\ dx,\ \textcolor{keywordtype}{double}\ dy);}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraphicPrimitive_ad95134a832841e7b7ab6fc82c7043b2f}{Rotate}}(\textcolor{keywordtype}{double}\ angle);}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraphicPrimitive_a58b4da2ffbd435c2c0b8bdc3c717c9e6}{Scale}}(\textcolor{keywordtype}{double}\ sx,\ \textcolor{keywordtype}{double}\ sy);}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraphicPrimitive_a89f21451908e26689f032c8eaeb74c04}{SetColor}}(\mbox{\hyperlink{classmyMath_1_1Color}{myMath::Color}}\ newColor);}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraphicPrimitive_a6304bdeda31662d9b56c47cafb7f0f6b}{SetPosition}}(\mbox{\hyperlink{classmyMath_1_1Position}{myMath::Position}}\ newPosition);}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraphicPrimitive_a1d5041542147b3288a14e8eac18dff97}{SetSize}}(\mbox{\hyperlink{classmyMath_1_1Size}{myMath::Size}}\ newSize);}
+\DoxyCodeLine{00022\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{classmyMath_1_1Color}{myMath::Color}}\ \ \ \ \ \ \ m\_color;}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{classmyMath_1_1Position}{myMath::Position}}\ \ \ \ m\_position;}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{classmyMath_1_1Size}{myMath::Size}}\ \ \ \ \ \ \ \ m\_size;}
+\DoxyCodeLine{00026\ \};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//GRAPHICSEDITOR\_GRAPHICPRIMITIVE\_H}}
+
+\end{DoxyCode}

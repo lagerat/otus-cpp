@@ -1,0 +1,31 @@
+\doxysection{Primitive\+Controller.\+h}
+\hypertarget{PrimitiveController_8h_source}{}\label{PrimitiveController_8h_source}\index{src/Controllers/PrimitiveController.h@{src/Controllers/PrimitiveController.h}}
+\mbox{\hyperlink{PrimitiveController_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ GRAPHICSEDITOR\_PRIMITIVECONTROLLER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ GRAPHICSEDITOR\_PRIMITIVECONTROLLER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Line_8h}{../Models/Line.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Rectangle_8h}{../Models/Rectangle.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Document_8h}{../Models/Document.h}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classPrimitiveController}{PrimitiveController}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{classPrimitiveController_a78c5e543b213204df06e40128bfc489a}{PrimitiveController}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{classPrimitiveController_a40b226bce3353bf0923c50dcc0c6c4bd}{\string~PrimitiveController}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPrimitiveController_a1e9a25fd6b1356dda35d75883b8b86aa}{AddPrimitiveToDocument}}(std::unique\_ptr<GraphicPrimitive>,\ std::unique\_ptr<Document>);}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPrimitiveController_a1bf7ea6b1c3bc4daea43fb1660c80755}{RemovePrimitiveFromDocument}}(std::unique\_ptr<GraphicPrimitive>,\ std::unique\_ptr<Document>);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPrimitiveController_a2c3e98a784c844ea2b4bbda39c1aee3a}{CreateLine}}(\mbox{\hyperlink{classmyMath_1_1Position}{myMath::Position}}\ startPoint,\ \mbox{\hyperlink{classmyMath_1_1Position}{myMath::Position}}\ endPoint,\ \mbox{\hyperlink{classmyMath_1_1Color}{myMath::Color}}\ color);}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPrimitiveController_affaaf43b43fb1a0dc3bc984ca315f852}{CreateRectangle}}(\mbox{\hyperlink{classmyMath_1_1Position}{myMath::Position}}\ position,\ \mbox{\hyperlink{classmyMath_1_1Size}{myMath::Size}}\ size,\ \mbox{\hyperlink{classmyMath_1_1Color}{myMath::Color}}\ color);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//GRAPHICSEDITOR\_PRIMITIVECONTROLLER\_H}}
+
+\end{DoxyCode}

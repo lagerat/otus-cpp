@@ -2,7 +2,9 @@
 #define GRAPHICSEDITOR_GRAPHICPRIMITIVE_H
 #include "../math/MathHelper.h"
 
-
+/**
+* @brief GraphicPrimitive
+*/
 class GraphicPrimitive {
 public:
     GraphicPrimitive() = default;
