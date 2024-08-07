@@ -8,6 +8,8 @@ project(FilesDuplicate VERSION ${PROJECT_VESRION})
 add_subdirectory(googletest EXCLUDE_FROM_ALL)
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
+find_package(Boost COMPONENTS filesystem regex program_options)
+
 add_executable(FilesDuplicate main.cpp)
 
 add_executable(unitTests tests/tests.cpp)
@@ -16,6 +18,16 @@ set_target_properties(FilesDuplicate PROPERTIES
     CXX_STANDARD 14
     CXX_STANDARD_REQUIRED ON
 )
+
+target_include_directories(FilesDuplicate
+        PRIVATE ${Boost_INCLUDE_DIR})
+
+target_link_libraries(FilesDuplicate
+        PRIVATE
+        Boost::filesystem
+        Boost::regex
+        Boost::program_options)
+
 target_link_libraries(unitTests
         gtest
         gtest_main
