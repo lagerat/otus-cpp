@@ -10,7 +10,7 @@ include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 find_package(Boost COMPONENTS filesystem regex program_options)
 
-add_executable(FilesDuplicate main.cpp)
+add_executable(FilesDuplicate main.cpp src/FileScanner.cpp src/FileScanner.h src/hash/crc16.h src/hash/crc32.h src/DuplicatesFinder.cpp src/DuplicatesFinder.h src/FilesHashCheck.cpp src/FilesHashCheck.h)
 
 add_executable(unitTests tests/tests.cpp)
 
