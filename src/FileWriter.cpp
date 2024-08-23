@@ -14,7 +14,7 @@ FileWriter::~FileWriter()
     m_file.close();
 }
 //-----------------------------------------------------------
-void FileWriter::update([[maybe_unused]]const Data &data)
+void FileWriter::update(const Data &data)
 {
     for (const auto& chunk : data)
     {

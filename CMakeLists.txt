@@ -3,16 +3,16 @@ cmake_minimum_required(VERSION 3.10)
 set(PATCH_VERSION "1.0" CACHE INTERNAL "Patch version")
 set(PROJECT_VESRION 0.0.${PATCH_VERSION})
 
-project(bulk VERSION ${PROJECT_VESRION})
+project(bulkmt VERSION ${PROJECT_VESRION})
 
 add_subdirectory(googletest EXCLUDE_FROM_ALL)
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
-add_executable(bulk main.cpp src/Bulk.cpp src/Bulk.h src/FileWriter.cpp src/FileWriter.h src/LogWriter.cpp src/LogWriter.h src/IObserver.h)
+add_executable(bulkmt main.cpp src/Bulk.cpp src/Bulk.h src/FileWriter.cpp src/FileWriter.h src/LogWriter.cpp src/LogWriter.h src/IObserver.h async.cpp async.h)
 
 add_executable(unitTests tests/tests.cpp)
 
-set_target_properties(bulk PROPERTIES
+set_target_properties(bulkmt PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
 )
@@ -22,14 +22,14 @@ target_link_libraries(unitTests
 )
 
 if (MSVC)
-    target_compile_options(bulk PRIVATE
+    target_compile_options(bulkmt PRIVATE
         /W4
     )
     target_compile_options(unitTests PRIVATE
         /W4
     )
 else ()
-    target_compile_options(bulk PRIVATE
+    target_compile_options(bulkmt PRIVATE
         -Wall -Wextra -pedantic -Werror
     )
     target_compile_options(unitTests PRIVATE
@@ -39,7 +39,7 @@ endif()
 
 
 
-install(TARGETS bulk RUNTIME DESTINATION bin)
+install(TARGETS bulkmt RUNTIME DESTINATION bin)
 
 set(CPACK_GENERATOR DEB)
 

@@ -4,6 +4,7 @@
 #include <map>
 #include <list>
 #include <memory>
+#include <optional>
 
 class Bulk;
 
@@ -62,10 +63,11 @@ public:
     [[nodiscard]] size_t getSize() const;
     void setState(StateType type);
     void run();
+    void applyCommand(const std::string &data);
     void dispatch(const Data& data);
     void complete();
-
-    void subscribe(IObserver* obj);
+    void setSize(std::optional<size_t> size);
+    void subscribe(std::unique_ptr<IObserver> obj);
     void unsubscribeAll();
 
 private:
@@ -74,7 +76,7 @@ private:
     State::Ptr m_sm;
     bool m_isComplete;
 
-    std::list<IObserver*> m_listeners;
+    std::list<std::unique_ptr<IObserver>> m_listeners;
 };
 
 #endif //BULK_BULK_H

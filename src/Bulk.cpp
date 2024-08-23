@@ -125,6 +125,12 @@ void Bulk::run()
     }
 }
 //-----------------------------------------------------------
+void Bulk::applyCommand(const std::string &data)
+{
+    if(!m_isComplete)
+        m_sm->execute(data);
+}
+//-----------------------------------------------------------
 size_t Bulk::getSize() const
 {
     return m_size;
@@ -136,6 +142,11 @@ void Bulk::complete()
     unsubscribeAll();
 }
 //-----------------------------------------------------------
+void Bulk::setSize(std::optional<size_t> size)
+{
+    m_size = size.has_value() ? size.value() : m_size;
+}
+//-----------------------------------------------------------
 void Bulk::dispatch(const Data& data)
 {
     for (const auto& listener : m_listeners)
@@ -144,9 +155,9 @@ void Bulk::dispatch(const Data& data)
     }
 }
 //-----------------------------------------------------------
-void Bulk::subscribe(IObserver* listener)
+void Bulk::subscribe(std::unique_ptr<IObserver> listener)
 {
-    m_listeners.push_back(listener);
+    m_listeners.emplace_back(std::move(listener));
 }
 //-----------------------------------------------------------
 void Bulk::unsubscribeAll()

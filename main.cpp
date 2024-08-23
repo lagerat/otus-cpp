@@ -1,7 +1,5 @@
 #include <iostream>
-#include "src/Bulk.h"
-#include "src/LogWriter.h"
-#include "src/FileWriter.h"
+#include "async.h"
 
 int main(int argc, char* argv[])
 {
@@ -13,13 +11,12 @@ int main(int argc, char* argv[])
 
     const size_t size = std::stoi(argv[1]);
 
-    Bulk bulk{size};
+    auto h = async::connect(size);
 
-    LogWriter logWriter;
-    FileWriter fileWriter;
+    async::receive(h, "1");
+    async::receive(h, "\n{\n2\n3\n}\n4\n5\n6\n{\na\n");
+    async::receive(h, "b\nc\nd\n}\n89\n");
 
-    bulk.subscribe(&logWriter);
-    bulk.subscribe(&fileWriter);
+    async::disconnect(h);
 
-    bulk.run();
 }
