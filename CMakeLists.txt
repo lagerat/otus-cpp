@@ -5,10 +5,15 @@ set(PROJECT_VESRION 0.0.${PATCH_VERSION})
 
 project(bulkmt VERSION ${PROJECT_VESRION})
 
+find_package(Threads)
+find_package(Boost)
+
 add_subdirectory(googletest EXCLUDE_FROM_ALL)
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
-add_executable(bulkmt main.cpp src/Bulk.cpp src/Bulk.h src/FileWriter.cpp src/FileWriter.h src/LogWriter.cpp src/LogWriter.h src/IObserver.h async.cpp async.h)
+add_executable(bulkmt main.cpp src/Bulk.cpp src/Bulk.h src/FileWriter.cpp src/FileWriter.h src/LogWriter.cpp src/LogWriter.h src/IObserver.h async.cpp async.h src/ThreadPool.h)
+
+add_library(async SHARED src/Bulk.cpp src/Bulk.h src/FileWriter.cpp src/FileWriter.h src/LogWriter.cpp src/LogWriter.h src/IObserver.h async.cpp async.h src/ThreadPool.h)
 
 add_executable(unitTests tests/tests.cpp)
 
@@ -21,6 +26,15 @@ target_link_libraries(unitTests
         gtest_main
 )
 
+target_include_directories(async
+        PRIVATE ${Boost_INCLUDE_DIR})
+
+target_include_directories(async
+        PRIVATE ${Boost_INCLUDE_DIR})
+
+target_link_libraries(async
+        PRIVATE ${Boost_LIBRARY_DIR})
+
 if (MSVC)
     target_compile_options(bulkmt PRIVATE
         /W4
@@ -30,14 +44,12 @@ if (MSVC)
     )
 else ()
     target_compile_options(bulkmt PRIVATE
-        -Wall -Wextra -pedantic -Werror
+        -Wextra -pedantic -Werror
     )
     target_compile_options(unitTests PRIVATE
-        -Wall -Wextra -pedantic -Werror
+        -Wextra -pedantic -Werror
     )
 endif()
-
-
 
 install(TARGETS bulkmt RUNTIME DESTINATION bin)
 

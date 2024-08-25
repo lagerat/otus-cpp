@@ -2,89 +2,41 @@
 #include <chrono>
 #include <thread>
 
-std::atomic<bool> FileWriter::isDone = false;
-std::atomic<int> FileWriter::threadCount = 0;
+
+ThreadPool FileWriter::threadPool(2);
+std::mutex FileWriter::mutex;
 //-----------------------------------------------------------
 FileWriter::FileWriter()
 {
     auto start = std::chrono::system_clock::now();
     m_fileName = "bulk" + std::to_string(start.time_since_epoch().count()) + ".txt";
-    m_file = std::ofstream(m_fileName);
 }
 //-----------------------------------------------------------
 FileWriter::~FileWriter()
 {
-    m_file.close();
+    threadPool.wait_all();
 }
-
-void FileWriter::write_block(const std::string &command, const std::string &fileName)
+//-----------------------------------------------------------
+void FileWriter::write(Data data, const std::string &fileName)
 {
+    std::lock_guard<std::mutex> guard(mutex);
+
     std::ofstream file(fileName, std::ofstream::out | std::ofstream::app);
 
-    if(command.empty())
-        return;
-
-    file << command << " ";
-}
-
-void FileWriter::write(CommandQueue& queue, const std::string &fileName)
-{
-    threadCount++;
-
-    while (!queue.isEmpty())
+    for(auto& command : data)
     {
-        auto block = queue.popCommand();
-        write_block(block, fileName);
+        file << command << " ";
     }
 
-    threadCount--;
-    if(threadCount == 0)
-        FinishUpdate(fileName);
+    file << std::endl;
 }
 //-----------------------------------------------------------
 void FileWriter::update(const Data &data)
 {
-    isDone = false;
-    threadCount = 0;
-
     if (data.empty())
         return;
 
-    CommandQueue queue(data);
-
-    std::thread file_1(write, std::ref(queue), m_fileName);
-    std::thread file_2(write, std::ref(queue), m_fileName);
-
-    file_1.join();
-    file_2.join();
+    auto taskId = threadPool.add_task(write, data, std::cref(m_fileName));
+    threadPool.wait(taskId);
 }
-void FileWriter::FinishUpdate( const std::string &fileName)
-{
-    std::ofstream file(fileName, std::ofstream::out | std::ofstream::app);
-    file << std::endl;
-}
-
 //-----------------------------------------------------------
-CommandQueue::CommandQueue(const Data &data)
-{
-    for (const auto& chunk : data   )
-        m_queue.push(chunk);
-}
-
-std::string CommandQueue::popCommand()
-{
-    std::unique_lock<std::mutex> lock(m_mutex);
-
-    if(m_queue.empty())
-        return "";
-
-    auto result = m_queue.front();
-    m_queue.pop();
-
-    return result;
-}
-
-bool CommandQueue::isEmpty()
-{
-    return m_queue.empty();
-}

@@ -3,20 +3,18 @@
 
 int main(int argc, char* argv[])
 {
-    if (argc < 2)
-    {
-        std::cerr << "Expected argument when launching program" << std::endl;
-        return EXIT_FAILURE;
-    }
 
-    const size_t size = std::stoi(argv[1]);
+    std::size_t bulk = 5;
+    auto h = async::connect(bulk);
+    auto h2 = async::connect(bulk);
 
-    auto h = async::connect(size);
-
-    async::receive(h, "1");
-    async::receive(h, "\n{\n2\n3\n}\n4\n5\n6\n{\na\n");
-    async::receive(h, "b\nc\nd\n}\n89\n");
+    async::receive(h, "1", 1);
+    async::receive(h2, "1\n", 2);
+    async::receive(h, "\n2\n3\n4\n5\n6\n{\na\n", 15);
+    async::receive(h, "b\nc\nd\n}\n89\n", 11);
 
     async::disconnect(h);
+    async::disconnect(h2);
+
 
 }

@@ -13,6 +13,8 @@ jobs:
       - run: cmake --build .
       - run: cmake --build . --target test
       - run: cmake --build . --target package
+      - name: Archive binaries
+        run: tar -czvf release_package.tar.gz ./bulkmt ./libasync.so
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -30,6 +32,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./bulkmt
-          asset_name: bulkmt
-          asset_content_type: application/executable
+          asset_path: ./release_package.tar.gz
+          asset_name: release_package.tar.gz
+          asset_content_type: application/gzip
